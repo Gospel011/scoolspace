@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:schoolspace/constants/colors.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final String text;
@@ -68,7 +69,15 @@ class MyElevatedButton extends StatelessWidget {
                   ? Text(
                       text,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.white, fontWeight: fontWeight),
+                            color: disabled
+                                ? Theme.of(context)
+                                    .colorScheme
+                                    .onSecondaryContainer
+                                : Theme.of(context).colorScheme.surface,
+                                fontSize: disabled ? 14.sp : null,
+                                height: disabled ? 17.64.h / 14.sp : null,
+                            fontWeight: disabled ? FontWeight.w500 : fontWeight,
+                          ),
                     )
                   : const Center(
                       // height: 24,

@@ -8,4 +8,6 @@ class AppColors {
   static const Color charcoal = Color(0xFF1E1E1E);
   static const Color surfaceColor = Color(0xFFFFFFFF);
   static const Color onSurfaceColor = Color(0xFF000000);
+
+  static const Color lightGrey = Color(0xFFEAEAEA);
 }

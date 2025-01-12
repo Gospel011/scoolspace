@@ -16,9 +16,11 @@ class AppThemes {
       brightness: Brightness.light,
       primaryColor: AppColors.skyBlue,
       colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.skyBlue,
-          surface: AppColors.surfaceColor,
-          onSurface: AppColors.midnightBlue),
+        seedColor: AppColors.skyBlue,
+        surface: AppColors.surfaceColor,
+        onSurface: AppColors.midnightBlue,
+        onSecondaryContainer: AppColors.charcoal,
+      ),
       useMaterial3: false,
 
       //* My text themes
@@ -56,7 +58,7 @@ class AppThemes {
               backgroundColor:
                   WidgetStateProperty.resolveWith((Set<WidgetState> states) {
                 if (states.contains(WidgetState.disabled)) {
-                  return AppColors.skyBlue.withOpacity(0.5);
+                  return AppColors.lightGrey;
                 }
 
                 return AppColors.skyBlue;

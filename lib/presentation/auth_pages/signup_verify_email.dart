@@ -136,7 +136,7 @@ class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
               MyPinInput(
                 controller: otp,
                 size: 70.r,
-                onChanged: (_) => setState(() {}),
+                // onChanged: (_) => setState(() {}),
               ).pOnly(bottom: 24.h),
 
               // Continue button
