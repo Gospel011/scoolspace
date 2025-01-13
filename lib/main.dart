@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:schoolspace/presentation/auth_pages/signup/signup_email.dart';
 import 'package:schoolspace/presentation/go_router_config.dart';
 import 'package:schoolspace/utils/themes.dart';
 
