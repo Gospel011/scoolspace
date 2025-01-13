@@ -10,5 +10,6 @@ class AppColors {
   static const Color onSurfaceColor = Color(0xFF000000);
 
   static const Color lightGrey = Color(0xFFEAEAEA);
+  static const Color blueGrey = Color(0xFF00111C);
   static const Color red = Color(0xFFFF3333);
 }

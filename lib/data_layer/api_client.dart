@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'package:schoolspace/data_layer/models/client_response.dart';
 import 'package:schoolspace/data_layer/models/helper_models/error_model.dart';
 import 'package:schoolspace/data_layer/models/helper_models/file_model.dart';
-import 'package:schoolspace/utils/constants.dart';
+import 'package:schoolspace/utils/constants/constants.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
 
 class ApiClient {

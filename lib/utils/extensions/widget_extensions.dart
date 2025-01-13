@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:schoolspace/utils/constants.dart';
+import 'package:schoolspace/utils/constants/constants.dart';
 
 extension WidgetExtension on Widget {
   Widget pSymmetric({double? horizontal, double vertical = 0}) {

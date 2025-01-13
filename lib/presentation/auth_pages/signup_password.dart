@@ -23,7 +23,7 @@ class SignupPassword extends StatefulWidget {
 }
 
 class _SignupPasswordState extends State<SignupPassword> {
-  final TextEditingController password = TextEditingController();
+  final TextEditingController password = TextEditingController(text: '12345678');
   bool isValid = true;
 
   @override

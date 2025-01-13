@@ -23,7 +23,7 @@ class SignupEmail extends StatefulWidget {
 }
 
 class _SignupEmailState extends State<SignupEmail> {
-  final TextEditingController email = TextEditingController();
+  final TextEditingController email = TextEditingController(text: 'example@gmail.com');
 
   @override
   void dispose() {

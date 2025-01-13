@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:schoolspace/constants/colors.dart';
-import 'package:schoolspace/utils/constants.dart';
+import 'package:schoolspace/utils/constants/constants.dart';
 
 class MyPinInput extends StatelessWidget {
   const MyPinInput({

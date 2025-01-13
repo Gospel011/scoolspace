@@ -28,7 +28,7 @@ class SignupVerifyEmail extends StatefulWidget {
 }
 
 class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
-  final TextEditingController otp = TextEditingController();
+  final TextEditingController otp = TextEditingController(text: '1234');
 
   Timer? timer;
   final StreamHelper timerStream = StreamHelper();
@@ -150,7 +150,7 @@ class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
                 onPressed: () {
                   log.i("Otp: ${otp.text}");
 
-                  context.goNamed(AppRoutes.signupUserInfo.name);
+                  context.pushNamed(AppRoutes.signupUserInfo.name);
                 },
               ).pOnly(bottom: 24.h),
 
