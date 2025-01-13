@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:schoolspace/presentation/app_pages/home.dart';
 import 'package:schoolspace/presentation/auth_pages/signup_email.dart';
 import 'package:schoolspace/presentation/auth_pages/signup_password.dart';
+import 'package:schoolspace/presentation/auth_pages/signup_user_info.dart';
 import 'package:schoolspace/presentation/auth_pages/signup_verify_email.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
@@ -30,12 +31,12 @@ class AppRouterConfig {
 
   final goRouter = GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: '/signup-email',
+      initialLocation: '/${AppRoutes.signupEmail.path}',
       routes: [
         //? L O G G E D   I N   R O U T E S
         GoRoute(
             name: AppRoutes.home.name,
-            path: "/home",
+            path: "/${AppRoutes.home.path}",
             builder: (context, state) {
               return const Home();
             }),
@@ -43,7 +44,7 @@ class AppRouterConfig {
         //? E M A I L   V E R I F I C  A T I O N
         GoRoute(
             name: AppRoutes.signupVerifyEmail.name,
-            path: "/signup-verify-email",
+            path: "/${AppRoutes.signupVerifyEmail.path}",
             builder: (context, state) {
               return const SignupVerifyEmail();
             }),
@@ -51,21 +52,28 @@ class AppRouterConfig {
         //? A U T H E N T I C A T I O N   R O U T E S
         GoRoute(
             name: AppRoutes.signupEmail.name,
-            path: "/signup-email",
+            path: "/${AppRoutes.signupEmail.path}",
             builder: (context, state) {
               return const SignupEmail();
             },
             routes: [
-              // FORGOT PASSWORD
+              // SIGNUP PASSWORD
               GoRoute(
                 name: AppRoutes.signupPassword.name,
-                path: "signup-password",
+                path: AppRoutes.signupPassword.path,
                 builder: (context, state) {
                   return const SignupPassword();
                 },
               ),
 
-              // SIGNUP
+              // SIGNUP USER INFO
+              GoRoute(
+                name: AppRoutes.signupUserInfo.name,
+                path: AppRoutes.signupUserInfo.path,
+                builder: (context, state) {
+                  return const SignupUserInfo();
+                },
+              ),
             ]),
       ],
       redirect: (context, state) {

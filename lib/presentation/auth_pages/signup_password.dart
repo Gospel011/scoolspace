@@ -24,6 +24,7 @@ class SignupPassword extends StatefulWidget {
 
 class _SignupPasswordState extends State<SignupPassword> {
   final TextEditingController password = TextEditingController();
+  bool isValid = true;
 
   @override
   void dispose() {
@@ -32,6 +33,8 @@ class _SignupPasswordState extends State<SignupPassword> {
   }
 
   bool obscureText = true;
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -64,93 +67,103 @@ class _SignupPasswordState extends State<SignupPassword> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // space from top
-              SizedBox(
-                height: 32.h,
-              ),
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // space from top
+                SizedBox(
+                  height: 32.h,
+                ),
 
-              // icon
-              SvgPicture.asset(
-                AppIconPaths.logo,
-                width: 50.r,
-                height: 50.r,
-              ).pOnly(bottom: 24.h),
+                // icon
+                SvgPicture.asset(
+                  AppIconPaths.logo,
+                  width: 50.r,
+                  height: 50.r,
+                ).pOnly(bottom: 24.h),
 
-              // let's get you all setup
-              Text(
-                'Let\'s get you all setup',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ).pOnly(bottom: 8.h),
-
-              // then your password
-              Text(
-                'Then, your password. Try something super secure',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-              ).pOnly(bottom: 20.h),
-
-              // Email TextField
-              MyTextFormField(
-                sectionText: "Password",
-                textFieldType: TextFieldType.password,
-                hintText: "Enter your password...",
-                suffixText: obscureText ? "Show" : "Hide",
-                onSuffixTextPressed: () {
-                  setState(() {
-                    obscureText = !obscureText;
-                  });
-                },
-                onChanged: (_) => setState(() {}),
-                controller: password,
-                obscureText: obscureText,
-                validator: passwordValidator,
-              ).pOnly(bottom: 24.h),
-
-              // Continue button
-              MyElevatedButton(
-                text: "Continue",
-                disabled: passwordValidator(password.text) != null,
-                onPressed: () {
-                  context.pushNamed(AppRoutes.signupVerifyEmail.name);
-                },
-              ).pOnly(bottom: 24.h),
-
-              // Already have an account? login instead
-              Center(
-                child: Builder(builder: (context) {
-                  final textStyle = Theme.of(context).textTheme.bodySmall;
-
-                  return Wrap(
-                    spacing: 4.w,
-                    runSpacing: 4.h,
-                    children: [
-                      Text(
-                        "Already have an account",
-                        style: textStyle?.copyWith(color: AppColors.charcoal),
+                // let's get you all setup
+                Text(
+                  'Let\'s get you all setup',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          log.i("Navigate to login");
-                        },
-                        child: Text("Login instead",
-                            style: textStyle?.copyWith(
-                              color: AppColors.skyBlue,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      )
-                    ],
-                  );
-                }),
-              ),
-            ],
-          ).pSymmetric(horizontal: 30.w),
+                ).pOnly(bottom: 8.h),
+
+                // then your password
+                Text(
+                  'Then, your password. Try something super secure',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ).pOnly(bottom: 20.h),
+
+                // Email TextField
+                MyTextFormField(
+                  sectionText: "Password",
+                  textFieldType: TextFieldType.password,
+                  hintText: "Enter your password...",
+                  suffixText: obscureText ? "Show" : "Hide",
+                  filled: !isValid,
+                  fillColor:
+                      !isValid
+                          ? Colors.red.withValues(alpha: 0.1)
+                          : null,
+                  onSuffixTextPressed: () {
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
+                  onChanged: (_) => setState(() {
+                    isValid = formKey.currentState?.validate() ?? false;
+                  }),
+                  controller: password,
+                  obscureText: obscureText,
+                  validator: passwordValidator,
+                ).pOnly(bottom: 24.h),
+
+                // Continue button
+                MyElevatedButton(
+                  text: "Continue",
+                  disabled: passwordValidator(password.text) != null,
+                  onPressed: () {
+                    context.pushNamed(AppRoutes.signupVerifyEmail.name);
+                  },
+                ).pOnly(bottom: 24.h),
+
+                // Already have an account? login instead
+                Center(
+                  child: Builder(builder: (context) {
+                    final textStyle = Theme.of(context).textTheme.bodySmall;
+
+                    return Wrap(
+                      spacing: 4.w,
+                      runSpacing: 4.h,
+                      children: [
+                        Text(
+                          "Already have an account",
+                          style: textStyle?.copyWith(color: AppColors.charcoal),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            log.i("Navigate to login");
+                          },
+                          child: Text("Login instead",
+                              style: textStyle?.copyWith(
+                                color: AppColors.skyBlue,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        )
+                      ],
+                    );
+                  }),
+                ),
+              ],
+            ).pSymmetric(horizontal: 30.w),
+          ),
         ),
       ),
     );

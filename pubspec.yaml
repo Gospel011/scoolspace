@@ -44,6 +44,7 @@ dependencies:
   http: ^1.2.2
   hive_flutter: ^1.1.0
   hydrated_bloc: ^9.1.5
+  intl_phone_field: ^3.2.0
 
 dev_dependencies:
   flutter_test:

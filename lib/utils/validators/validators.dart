@@ -27,7 +27,7 @@ String? passwordValidator(value) {
   if (value.split('').length >= passwordLowerLimit) {
     return null;
   } else {
-    return 'Your password must be atleast $passwordLowerLimit characters long';
+    return 'Password must be atleast $passwordLowerLimit characters';
   }
 }
 

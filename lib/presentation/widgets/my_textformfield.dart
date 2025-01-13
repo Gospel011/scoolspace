@@ -74,35 +74,40 @@ class MyTextFormField extends StatelessWidget {
   final String? prefixText;
   final String? suffixText;
   final VoidCallback? onSuffixTextPressed;
+  final bool? filled;
+  final Color? fillColor;
 
-  const MyTextFormField(
-      {super.key,
-      this.hintText,
-      this.onTap,
-      required this.controller,
-      required this.validator,
-      this.onSuffixTextPressed,
-      this.prefixText,
-      this.suffixText,
-      this.minLines,
-      this.padding,
-      this.sectionText,
-      this.sectionTextFontWeight,
-      this.maxLines,
-      this.contentPadding,
-      this.suffixIcon,
-      this.suffixOnpressed,
-      this.obscureText = false,
-      this.readOnly,
-      this.enabled,
-      this.keyboardType,
-      this.inputFormatters,
-      this.focusNode,
-      this.onChanged,
-      this.enabledBorder,
-      this.focusedBorder,
-      this.errorBorder,
-      this.textFieldType});
+  const MyTextFormField({
+    super.key,
+    this.hintText,
+    this.onTap,
+    required this.controller,
+    required this.validator,
+    this.onSuffixTextPressed,
+    this.prefixText,
+    this.suffixText,
+    this.minLines,
+    this.padding,
+    this.sectionText,
+    this.sectionTextFontWeight,
+    this.maxLines,
+    this.contentPadding,
+    this.suffixIcon,
+    this.suffixOnpressed,
+    this.obscureText = false,
+    this.readOnly,
+    this.enabled,
+    this.keyboardType,
+    this.inputFormatters,
+    this.focusNode,
+    this.onChanged,
+    this.enabledBorder,
+    this.focusedBorder,
+    this.errorBorder,
+    this.textFieldType,
+    this.filled,
+    this.fillColor
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -124,71 +129,81 @@ class MyTextFormField extends StatelessWidget {
           Stack(
             alignment: Alignment.center,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      obscureText: obscureText,
-                      enabled: enabled,
-                      readOnly: readOnly ?? false,
-                      maxLines: obscureText == false ? (maxLines ?? 1) : 1,
-                      minLines: minLines,
-                      onTap: onTap,
-                      focusNode: focusNode,
-                      onChanged: onChanged,
-                      controller: controller,
-                      validator: validator,
-                      cursorColor: AppColors.midnightBlue,
-                      textAlign: textFieldType == TextFieldType.otp
-                          ? TextAlign.center
-                          : TextAlign.start,
-                      keyboardType: textFieldType == TextFieldType.otp
-                          ? TextInputType.number
-                          : keyboardType,
-                      cursorWidth: 1.0,
-                      decoration: InputDecoration(
-                          filled: false,
-                          // suffixText: suffixText,
-                          contentPadding: textFieldType == TextFieldType.otp
-                              ? const EdgeInsets.symmetric(horizontal: 8)
-                              : textFieldType == TextFieldType.password
-                                  ? EdgeInsets.only(left: 16.w, right: 56.w)
-                                  : contentPadding,
-                          hintText: hintText,
-                          // hintStyle: const TextStyle(),
-                          prefixText: prefixText,
-                          suffixIcon: suffixIcon != null
-                              ? IconButton(
-                                  onPressed: suffixOnpressed, icon: suffixIcon!)
-                              : null,
-                          enabledBorder: enabledBorder,
-                          focusedBorder: focusedBorder,
-                          errorBorder: errorBorder,
-                          focusedErrorBorder: errorBorder),
-                      inputFormatters: textFieldType == TextFieldType.otp
-                          ? [
-                              LengthLimitingTextInputFormatter(1),
-                              FilteringTextInputFormatter.digitsOnly
-                            ]
-                          : inputFormatters,
-                    ),
-                  ),
-                ],
-              ),
-              if (suffixText != null)
-                Positioned(
-                  right: 12.w,
-                  child: GestureDetector(
-                    onTap: onSuffixTextPressed,
-                    child: Text(
-                      suffixText!,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: AppColors.charcoal,
-                            fontWeight: FontWeight.w500,
+              TextFormField(
+                obscureText: obscureText,
+                enabled: enabled,
+                readOnly: readOnly ?? false,
+                maxLines: obscureText == false ? (maxLines ?? 1) : 1,
+                minLines: minLines,
+                onTap: onTap,
+                focusNode: focusNode,
+                onChanged: onChanged,
+                controller: controller,
+                validator: validator,
+                cursorColor: AppColors.midnightBlue,
+                textAlign: textFieldType == TextFieldType.otp
+                    ? TextAlign.center
+                    : TextAlign.start,
+                keyboardType: textFieldType == TextFieldType.otp
+                    ? TextInputType.number
+                    : keyboardType,
+                cursorWidth: 1.0,
+                decoration: InputDecoration(
+                    filled: filled,
+                    fillColor:
+                        fillColor,
+                    suffix: suffixText == null
+                        ? null
+                        : GestureDetector(
+                            onTap: onSuffixTextPressed,
+                            child: Text(
+                              suffixText!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: AppColors.charcoal,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
-                    ),
-                  ),
-                )
+                    contentPadding: textFieldType == TextFieldType.otp
+                        ? const EdgeInsets.symmetric(horizontal: 8)
+                        : textFieldType == TextFieldType.password
+                            ? EdgeInsets.only(left: 16.w, right: 16.w)
+                            : contentPadding,
+                    hintText: hintText,
+                    // hintStyle: const TextStyle(),
+                    prefixText: prefixText,
+                    suffixIcon: suffixIcon != null
+                        ? IconButton(
+                            onPressed: suffixOnpressed, icon: suffixIcon!)
+                        : null,
+                    enabledBorder: enabledBorder,
+                    focusedBorder: focusedBorder,
+                    errorBorder: errorBorder,
+                    focusedErrorBorder: errorBorder),
+                inputFormatters: textFieldType == TextFieldType.otp
+                    ? [
+                        LengthLimitingTextInputFormatter(1),
+                        FilteringTextInputFormatter.digitsOnly
+                      ]
+                    : inputFormatters,
+              ),
+              // if (suffixText != null)
+              //   Positioned(
+              //     right: 12.w,
+              //     child: GestureDetector(
+              //       onTap: onSuffixTextPressed,
+              //       child: Text(
+              //         suffixText!,
+              //         style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              //               color: AppColors.charcoal,
+              //               fontWeight: FontWeight.w500,
+              //             ),
+              //       ),
+              //     ),
+              //   )
             ],
           ),
         ],

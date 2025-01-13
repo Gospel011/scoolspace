@@ -120,16 +120,27 @@ class AppThemes {
       inputDecorationTheme: InputDecorationTheme(
           //* padding
           contentPadding: EdgeInsets.only(left: 16.w, top: 10.h),
+          
           //* for normal border
-
           border: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: AppColors.midnightTeal.withOpacity(0.4)),
+              borderSide: BorderSide(
+                color: AppColors.midnightTeal.withValues(alpha: 0.4),
+              ),
               borderRadius: BorderRadius.circular(8.r)),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.red.withValues(alpha: 0.4)),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.red.withValues(alpha: 0.4)),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
           //* for focused border
           focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.midnightTeal),
-              borderRadius: BorderRadius.circular(8.r)),
+            borderSide: BorderSide(
+                color: AppColors.midnightTeal.withValues(alpha: 0.4)),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
 
           //* for enabled border
           enabledBorder: OutlineInputBorder(

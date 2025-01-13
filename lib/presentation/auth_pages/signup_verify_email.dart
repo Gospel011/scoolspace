@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:pinput/pinput.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/constants/icon_paths.dart';
 import 'package:schoolspace/presentation/app_pages/home.dart';
@@ -136,7 +138,9 @@ class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
               MyPinInput(
                 controller: otp,
                 size: 70.r,
-                // onChanged: (_) => setState(() {}),
+                onChanged: (_) => setState(() {
+                  log.i("Otp length: ${otp.text.length}");
+                }),
               ).pOnly(bottom: 24.h),
 
               // Continue button
@@ -146,7 +150,7 @@ class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
                 onPressed: () {
                   log.i("Otp: ${otp.text}");
 
-                  context.goNamed(AppRoutes.home.name);
+                  context.goNamed(AppRoutes.signupUserInfo.name);
                 },
               ).pOnly(bottom: 24.h),
 
