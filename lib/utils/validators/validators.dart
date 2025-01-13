@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:schoolspace/utils/constants/countries.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
 
 const int passwordLowerLimit = 8;
@@ -79,10 +80,12 @@ String? signupGenderFieldValidator(String? value) {
 }
 
 ///? Ensures that the phone number is of appropriate length
-String? signupPhoneNumberValidator(String? value) {
+String? signupPhoneNumberValidator(String? value, Country selectedCountry) {
   if (value != null) {
-    if (value.length < 5) {
-      return 'Should have atleast 5 characters';
+    final parsedPhoneNumber = int.tryParse(value.trim()).toString();
+    if (parsedPhoneNumber.length < selectedCountry.minLength ||
+        parsedPhoneNumber.length > selectedCountry.maxLength) {
+      return 'Invalid phone number';
     }
   } else {
     return 'Please provide your phone number';

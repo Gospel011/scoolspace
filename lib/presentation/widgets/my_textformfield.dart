@@ -76,9 +76,11 @@ class MyTextFormField extends StatelessWidget {
   final VoidCallback? onSuffixTextPressed;
   final bool? filled;
   final Color? fillColor;
+  final TextStyle? errorStyle;
 
   const MyTextFormField({
     super.key,
+    this.errorStyle,
     this.hintText,
     this.onTap,
     required this.controller,
@@ -150,6 +152,7 @@ class MyTextFormField extends StatelessWidget {
                 cursorWidth: 1.0,
                 decoration: InputDecoration(
                     filled: filled,
+                    errorStyle: errorStyle,
                     fillColor:
                         fillColor,
                     suffix: suffixText == null

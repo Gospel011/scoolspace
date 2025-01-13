@@ -17,11 +17,22 @@ class AppThemes {
     primaryColor: AppColors.skyBlue,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.skyBlue,
+      primary: AppColors.skyBlue,
+      onPrimary: AppColors.surfaceColor,
       surface: AppColors.surfaceColor,
       onSurface: AppColors.midnightBlue,
+      error: AppColors.red,
       onSecondaryContainer: AppColors.charcoal,
     ),
     useMaterial3: false,
+
+    dropdownMenuTheme: DropdownMenuThemeData(
+        menuStyle: MenuStyle(
+      shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r))),
+      padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h)),
+    )),
 
     //* My text themes
     textTheme: TextTheme(
@@ -86,10 +97,26 @@ class AppThemes {
 
     //* Scaffold theme
     scaffoldBackgroundColor: AppColors.surfaceColor,
-    // checkboxTheme: CheckboxThemeData(
-    //     fillColor: const WidgetStatePropertyAll(AppColors.royalPurple),
-    //     shape:
-    //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.r))),
+    checkboxTheme: CheckboxThemeData(
+      splashRadius: 0,
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      fillColor: WidgetStateProperty.resolveWith<Color>(
+        (states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.skyBlue;
+          }
+
+          return AppColors.blueGrey.withValues(alpha: 0.2);
+        },
+      ),
+      side: BorderSide(
+        width: 0.5,
+        color: AppColors.blueGrey.withValues(alpha: 0.2),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4.r),
+      ),
+    ),
 
     //* My app bar theme
     appBarTheme: AppBarTheme(
