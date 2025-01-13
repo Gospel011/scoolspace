@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_elevated_button.dart';
 import 'package:schoolspace/presentation/widgets/my_textformfield.dart';

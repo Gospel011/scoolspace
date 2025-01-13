@@ -3,10 +3,12 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolspace/presentation/app_pages/home.dart';
-import 'package:schoolspace/presentation/auth_pages/signup_email.dart';
-import 'package:schoolspace/presentation/auth_pages/signup_password.dart';
-import 'package:schoolspace/presentation/auth_pages/signup_user_info.dart';
-import 'package:schoolspace/presentation/auth_pages/signup_verify_email.dart';
+import 'package:schoolspace/presentation/auth_pages/login/login_email.dart';
+import 'package:schoolspace/presentation/auth_pages/login/login_password.dart';
+import 'package:schoolspace/presentation/auth_pages/signup/signup_email.dart';
+import 'package:schoolspace/presentation/auth_pages/signup/signup_password.dart';
+import 'package:schoolspace/presentation/auth_pages/signup/signup_user_info.dart';
+import 'package:schoolspace/presentation/auth_pages/signup/signup_verify_email.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
 
@@ -50,6 +52,21 @@ class AppRouterConfig {
             }),
 
         //? A U T H E N T I C A T I O N   R O U T E S
+        GoRoute(
+            name: AppRoutes.loginEmail.name,
+            path: "/${AppRoutes.loginEmail.path}",
+            builder: (context, state) {
+              return const LoginEmail();
+            },
+            routes: [
+              GoRoute(
+                name: AppRoutes.loginPassword.name,
+                path: AppRoutes.loginPassword.path,
+                builder: (context, state) {
+                  return const LoginPassword();
+                },
+              )
+            ]),
         GoRoute(
             name: AppRoutes.signupEmail.name,
             path: "/${AppRoutes.signupEmail.path}",

@@ -4,21 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:pinput/pinput.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/constants/icon_paths.dart';
-import 'package:schoolspace/presentation/app_pages/home.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_elevated_button.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_text_button.dart';
 import 'package:schoolspace/presentation/widgets/my_pin_input.dart';
-import 'package:schoolspace/presentation/widgets/my_textformfield.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
-import 'package:schoolspace/utils/enums/enums.dart';
 import 'package:schoolspace/utils/extensions/widget_extensions.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
 import 'package:schoolspace/utils/helpers/stream_helper.dart';
-import 'package:schoolspace/utils/validators/validators.dart';
 
 class SignupVerifyEmail extends StatefulWidget {
   const SignupVerifyEmail({super.key});

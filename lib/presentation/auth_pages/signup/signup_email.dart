@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/constants/icon_paths.dart';
-import 'package:schoolspace/presentation/auth_pages/signup_password.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_elevated_button.dart';
 import 'package:schoolspace/presentation/widgets/my_textformfield.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
@@ -23,7 +22,8 @@ class SignupEmail extends StatefulWidget {
 }
 
 class _SignupEmailState extends State<SignupEmail> {
-  final TextEditingController email = TextEditingController(text: 'example@gmail.com');
+  final TextEditingController email =
+      TextEditingController(text: 'example@gmail.com');
 
   @override
   void dispose() {
@@ -126,6 +126,8 @@ class _SignupEmailState extends State<SignupEmail> {
                       GestureDetector(
                         onTap: () {
                           log.i("Navigate to login");
+
+                          context.goNamed(AppRoutes.loginEmail.name);
                         },
                         child: Text("Login instead",
                             style: textStyle?.copyWith(
