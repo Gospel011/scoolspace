@@ -17,10 +17,10 @@ class ApiResponse {
 
   factory ApiResponse.fromMap(
       {Map<String, dynamic>? body, ClientResponse? response}) {
-    final String? urlPath = response?.requestUrl.path;
-    final String? urlHost = response?.requestUrl.host;
-    final Map<String, String>? queryParameters =
-        response?.requestUrl.queryParameters;
+    // final String? urlPath = response?.requestUrl.path;
+    // final String? urlHost = response?.requestUrl.host;
+    // final Map<String, String>? queryParameters =
+    //     response?.requestUrl.queryParameters;
 
     final bool success =
         (response?.statusCode?.startsWith('200') ?? body?['success']) == true;

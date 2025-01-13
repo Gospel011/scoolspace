@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_text_button.dart';
-import 'package:schoolspace/utils/helpers/logger.dart';
 
 class LabelButton extends StatelessWidget {
   const LabelButton({

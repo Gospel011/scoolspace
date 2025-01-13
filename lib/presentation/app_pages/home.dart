@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/presentation/widgets/buttons/label_button.dart';
-import 'package:schoolspace/presentation/widgets/buttons/my_text_button.dart';
 import 'package:schoolspace/presentation/widgets/perk_card.dart';
 import 'package:schoolspace/utils/enums/pricing_plans.dart';
 import 'package:schoolspace/utils/extensions/widget_extensions.dart';
