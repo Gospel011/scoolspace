@@ -23,7 +23,7 @@ class LoginEmail extends StatefulWidget {
 
 class _LoginEmailState extends State<LoginEmail> {
   final TextEditingController email =
-      TextEditingController(text: 'example@gmail.com');
+      TextEditingController(text: '');
 
   @override
   void dispose() {

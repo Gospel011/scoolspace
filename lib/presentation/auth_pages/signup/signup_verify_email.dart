@@ -22,7 +22,7 @@ class SignupVerifyEmail extends StatefulWidget {
 }
 
 class _SignupVerifyEmailState extends State<SignupVerifyEmail> {
-  final TextEditingController otp = TextEditingController(text: '1234');
+  final TextEditingController otp = TextEditingController(text: '');
 
   Timer? timer;
   final StreamHelper timerStream = StreamHelper();
