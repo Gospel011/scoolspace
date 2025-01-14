@@ -7,31 +7,20 @@ import 'package:schoolspace/constants/colors.dart';
 import 'package:schoolspace/constants/icon_paths.dart';
 import 'package:schoolspace/presentation/widgets/buttons/my_elevated_button.dart';
 import 'package:schoolspace/presentation/widgets/components/terms_and_conditions.dart';
-import 'package:schoolspace/presentation/widgets/my_textformfield.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
 import 'package:schoolspace/utils/extensions/widget_extensions.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
-import 'package:schoolspace/utils/validators/validators.dart';
 
-class SignupEmail extends StatefulWidget {
-  const SignupEmail({
+class GetStartedPage extends StatefulWidget {
+  const GetStartedPage({
     super.key,
   });
 
   @override
-  State<SignupEmail> createState() => _SignupEmailState();
+  State<GetStartedPage> createState() => _GetStartedPageState();
 }
 
-class _SignupEmailState extends State<SignupEmail> {
-  final TextEditingController email =
-      TextEditingController(text: 'example@gmail.com');
-
-  @override
-  void dispose() {
-    email.dispose();
-    super.dispose();
-  }
-
+class _GetStartedPageState extends State<GetStartedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,34 +49,15 @@ class _SignupEmailState extends State<SignupEmail> {
 
               // let's get you all setup
               Text(
-                'Let\'s get you all setup',
+                'Simple school solutions for everyone with scoolspace',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ).pOnly(bottom: 8.h),
 
-              // first your email
-              Text(
-                'First, your email',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-              ).pOnly(bottom: 20.h),
-
-              // Email TextField
-              MyTextFormField(
-                sectionText: "Email",
-                keyboardType: TextInputType.emailAddress,
-                hintText: "Enter your email...",
-                controller: email,
-                onChanged: (_) => setState(() {}),
-                validator: emailValidator,
-              ).pOnly(bottom: 24.h),
-
               // Continue button
               MyElevatedButton(
                 text: "Continue",
-                disabled: !EmailValidator.validate(email.text),
                 onPressed: () {
                   context.pushNamed(AppRoutes.signupPassword.name);
                 },

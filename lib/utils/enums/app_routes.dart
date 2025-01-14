@@ -5,7 +5,10 @@ enum AppRoutes {
   signupPassword,
   signupVerifyEmail,
   home,
-  signupUserInfo, loginPassword, loginEmail;
+  signupUserInfo,
+  loginPassword,
+  loginEmail,
+  onboarding, getStarted;
 
   String get path => name.kebabCase;
 }

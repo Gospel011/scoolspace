@@ -22,7 +22,11 @@ class AppThemes {
       surface: AppColors.surfaceColor,
       onSurface: AppColors.midnightBlue,
       error: AppColors.red,
+      secondary: AppColors.blueGrey,
+      onSecondary: AppColors.surfaceColor,
       onSecondaryContainer: AppColors.charcoal,
+      tertiary: AppColors.brightGreen,
+      outline: AppColors.energyYellow
     ),
     useMaterial3: false,
 
@@ -38,6 +42,7 @@ class AppThemes {
     textTheme: TextTheme(
       displayLarge: AppTypography.displayLarge,
       displayMedium: AppTypography.displayMedium,
+      displaySmall: AppTypography.displaySmall,
       headlineLarge: AppTypography.headlineLarge,
       headlineMedium: AppTypography.headlineMedium,
       titleLarge: AppTypography.titleLarge,

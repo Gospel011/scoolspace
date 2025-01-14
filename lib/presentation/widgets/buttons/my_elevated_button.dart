@@ -22,7 +22,7 @@ class MyElevatedButton extends StatelessWidget {
     this.borderRadius,
     required this.text,
     this.icon,
-    this.fontWeight,
+    this.fontWeight = FontWeight.bold,
     this.loading,
     this.backgroundColor,
     this.disabled = false,
@@ -73,8 +73,8 @@ class MyElevatedButton extends StatelessWidget {
                                     .colorScheme
                                     .onSecondaryContainer
                                 : Theme.of(context).colorScheme.surface,
-                                fontSize: disabled ? 14.sp : null,
-                                height: disabled ? 17.64.h / 14.sp : null,
+                            fontSize: disabled ? 14.sp : null,
+                            height: disabled ? 17.64.h / 14.sp : null,
                             fontWeight: disabled ? FontWeight.w500 : fontWeight,
                           ),
                     )

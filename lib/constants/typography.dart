@@ -28,6 +28,15 @@ class AppTypography {
   );
 
   //*
+  static final displaySmall = TextStyle( 
+    color: AppColors.midnightTeal,
+    fontFamily: 'PlusJakartaSans',
+    fontSize: 32.sp,
+    height: 40.32.h / 32.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  //*
   static final headlineLarge = TextStyle( 
     color: AppColors.midnightTeal,
     fontFamily: 'PlusJakartaSans',
