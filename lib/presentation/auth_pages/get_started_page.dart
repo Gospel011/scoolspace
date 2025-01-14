@@ -21,6 +21,7 @@ class GetStartedPage extends StatefulWidget {
 }
 
 class _GetStartedPageState extends State<GetStartedPage> {
+  GlobalKey leadingIconKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +78,9 @@ class _GetStartedPageState extends State<GetStartedPage> {
 
             MyElevatedButton(
               text: "Continue with google",
-              leadingIcon: SvgPicture.asset('assets/svg/google_logo.svg'),
+              // mainAxisSize: MainAxisSize.min,
+              leadingIconKey: leadingIconKey,
+              leadingIcon: SvgPicture.asset(key: leadingIconKey, 'assets/svg/google_logo.svg'),
               backgroundColor: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 context.pushNamed(AppRoutes.signupEmail.name);
@@ -107,8 +110,9 @@ class _GetStartedPageState extends State<GetStartedPage> {
               ],
             ),
 
-            SizedBox(height: 43.h,),
-
+            SizedBox(
+              height: 43.h,
+            ),
           ],
         ).pSymmetric(horizontal: 30.w),
       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class MyElevatedButton extends StatelessWidget {
+class MyElevatedButton extends StatefulWidget {
   final String text;
   final bool? loading;
   final MainAxisSize mainAxisSize;
@@ -14,9 +14,11 @@ class MyElevatedButton extends StatelessWidget {
   final FontWeight? fontWeight;
   final BorderRadiusGeometry? borderRadius;
   final bool disabled;
+  final GlobalKey? leadingIconKey;
 
   const MyElevatedButton({
     super.key,
+    this.leadingIconKey,
     this.onPressed,
     this.mainAxisSize = MainAxisSize.max,
     this.borderRadius,
@@ -30,66 +32,91 @@ class MyElevatedButton extends StatelessWidget {
   });
 
   @override
+  State<MyElevatedButton> createState() => _MyElevatedButtonState();
+}
+
+class _MyElevatedButtonState extends State<MyElevatedButton> {
+  Size? iconSize;
+
+  @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: borderRadius ?? BorderRadius.circular(16.r),
+      borderRadius: widget.borderRadius ?? BorderRadius.circular(16.r),
       child: ElevatedButton(
           style: ButtonStyle(
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                  borderRadius: borderRadius ?? BorderRadius.circular(16.r))),
-              backgroundColor: WidgetStatePropertyAll(backgroundColor)),
-          onPressed: disabled
+                  borderRadius:
+                      widget.borderRadius ?? BorderRadius.circular(16.r))),
+              backgroundColor: WidgetStatePropertyAll(widget.backgroundColor)),
+          onPressed: widget.disabled
               ? null
               : () {
-                  if (onPressed == null) return;
-                  loading == true ? null : onPressed!();
+                  if (widget.onPressed == null) return;
+                  widget.loading == true ? null : widget.onPressed!();
                 },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: mainAxisSize,
+          child: Stack(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisSize: mainAxisSize,
             children: [
-              if (leadingIcon != null)
-                leadingIcon is Widget
-                    ? leadingIcon
-                    : SvgPicture.asset(leadingIcon!)
-              else
-                const SizedBox(
-                  width: 0,
-                ),
-              if (leadingIcon != null)
-                SizedBox(
-                  width: 10.w,
-                )
-              else
-                const SizedBox(
-                  width: 0,
-                ),
-              loading != true
-                  ? Text(
-                      text,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: disabled
-                                ? Theme.of(context)
-                                    .colorScheme
-                                    .onSecondaryContainer
-                                : Theme.of(context).colorScheme.surface,
-                            fontSize: disabled ? 14.sp : null,
-                            height: disabled ? 17.64.h / 14.sp : null,
-                            fontWeight: disabled ? FontWeight.w500 : fontWeight,
-                          ),
-                    )
-                  : const Center(
-                      // height: 24,
-                      // width: 24,
-                      child: CircularProgressIndicator(
-                      color: Colors.white,
-                    )),
-              if (icon != null)
-                Icon(icon)
-              else
-                const SizedBox(
-                  width: 0,
-                ),
+              if (widget.leadingIcon != null)
+                widget.leadingIcon is Widget
+                    ? widget.leadingIcon
+                    : SvgPicture.asset(
+                        key: widget.leadingIconKey, widget.leadingIcon!),
+              Row(
+                mainAxisSize: widget.mainAxisSize,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (widget.leadingIcon != null &&
+                      widget.mainAxisSize == MainAxisSize.min)
+                    Builder(builder: (context) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        final renderBox = widget.leadingIconKey?.currentContext!
+                            .findRenderObject() as RenderBox;
+                        setState(() {
+                          iconSize = renderBox.size;
+                        });
+                      });
+
+                      return SizedBox(
+                        width: (iconSize?.width ?? 0) + 10.w,
+                      );
+                    }),
+                  widget.loading != true
+                      ? Text(
+                          widget.text,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                color: widget.disabled
+                                    ? Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer
+                                    : Theme.of(context).colorScheme.surface,
+                                fontSize: widget.disabled ? 14.sp : null,
+                                height:
+                                    widget.disabled ? 17.64.h / 14.sp : null,
+                                fontWeight: widget.disabled
+                                    ? FontWeight.w500
+                                    : widget.fontWeight,
+                              ),
+                        )
+                      : const Center(
+                          // height: 24,
+                          // width: 24,
+                          child: CircularProgressIndicator(
+                          color: Colors.white,
+                        )),
+                  if (widget.icon != null)
+                    Icon(widget.icon)
+                  else
+                    const SizedBox(
+                      width: 0,
+                    ),
+                ],
+              )
             ],
           )),
     );
