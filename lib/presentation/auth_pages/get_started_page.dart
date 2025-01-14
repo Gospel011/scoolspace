@@ -30,71 +30,87 @@ class _GetStartedPageState extends State<GetStartedPage> {
             .pOnly(bottom: 34.h, left: 60.w, right: 60.w),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // space from top
-              SizedBox(
-                height: 126.h,
-              ),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // space from top
+            SizedBox(
+              height: 126.h,
+            ),
 
-              // icon
-              SvgPicture.asset(
-                AppIconPaths.logo,
-                width: 50.r,
-                height: 50.r,
-              ).pOnly(bottom: 24.h),
+            // icon
+            SvgPicture.asset(
+              AppIconPaths.logo,
+              width: 50.r,
+              height: 50.r,
+            ).pOnly(bottom: 24.h),
 
-              // let's get you all setup
-              Text(
-                'Simple school solutions for everyone with scoolspace',
+            // let's get you all setup
+            RichText(
+              text: TextSpan(
+                text: 'Simple school\nsolutions for everyone\nwith ',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
-              ).pOnly(bottom: 8.h),
-
-              // Continue button
-              MyElevatedButton(
-                text: "Continue",
-                onPressed: () {
-                  context.pushNamed(AppRoutes.signupPassword.name);
-                },
-              ).pOnly(bottom: 24.h),
-
-              // Already have an account? login instead
-              Center(
-                child: Builder(builder: (context) {
-                  final textStyle = Theme.of(context).textTheme.bodySmall;
-
-                  return Wrap(
-                    spacing: 4.w,
-                    runSpacing: 4.h,
-                    children: [
-                      Text(
-                        "Already have an account",
-                        style: textStyle?.copyWith(color: AppColors.charcoal),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          log.i("Navigate to login");
-
-                          context.goNamed(AppRoutes.loginEmail.name);
-                        },
-                        child: Text("Login instead",
-                            style: textStyle?.copyWith(
-                              color: AppColors.skyBlue,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      )
-                    ],
-                  );
-                }),
+                children: [
+                  TextSpan(
+                      text: 'Scoolspace',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary)),
+                ],
               ),
-            ],
-          ).pSymmetric(horizontal: 30.w),
-        ),
+            ).pOnly(bottom: 8.h),
+
+            const Spacer(),
+
+            MyElevatedButton(
+              text: "Get started",
+              onPressed: () {
+                context.pushNamed(AppRoutes.signupEmail.name);
+              },
+            ),
+
+            SizedBox(
+              height: 16.h,
+            ),
+
+            MyElevatedButton(
+              text: "Continue with google",
+              leadingIcon: SvgPicture.asset('assets/svg/google_logo.svg'),
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              onPressed: () {
+                context.pushNamed(AppRoutes.signupEmail.name);
+              },
+            ),
+
+            SizedBox(
+              height: 30.h,
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    context.pushNamed(AppRoutes.loginEmail.name);
+                  },
+                  style: ButtonStyle(
+                    textStyle: WidgetStatePropertyAll(
+                      Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          decoration: TextDecoration.none,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  child: const Text("Login to your account"),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 43.h,),
+
+          ],
+        ).pSymmetric(horizontal: 30.w),
       ),
     );
   }
