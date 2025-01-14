@@ -86,7 +86,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       if (pageController.hasClients) {
         pageController.animateToPage(
           i,
-          duration: Durations.medium2,
+          duration: Durations.medium4,
           curve: Curves.easeInOut,
         );
       }

@@ -30,7 +30,7 @@ class _SignupUserInfoState extends State<SignupUserInfo> with UiInfoMixin {
   Gender? gender;
   DateTime? dateOfBirth;
   bool obscureText = true;
-  bool dontRecieveEmails = true;
+  bool dontRecieveEmails = false;
 
   final TextEditingController streetName = TextEditingController();
   final TextEditingController city = TextEditingController();
