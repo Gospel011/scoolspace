@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       child: Builder(builder: (context) {
         return MaterialApp.router(
           title: 'Schoolspace',
+          debugShowCheckedModeBanner: false,
           theme: AppThemes.lightTheme,
           routerConfig: routerConfig.router,
         );

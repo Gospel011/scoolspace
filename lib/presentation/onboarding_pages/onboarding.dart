@@ -320,6 +320,8 @@ class FifthOnboardingPageView extends StatelessWidget {
             Center(
               child: Image.asset(
                 'assets/images/onboarding_05.png',
+                width: 320.r,
+                height: 320.r,
                 alignment: Alignment.center,
               ),
             ),
