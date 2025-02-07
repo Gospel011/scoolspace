@@ -45,6 +45,8 @@ dependencies:
   hive_flutter: ^1.1.0
   hydrated_bloc: ^9.1.5
   intl_phone_field: ^3.2.0
+  cached_network_image: ^3.4.1
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:

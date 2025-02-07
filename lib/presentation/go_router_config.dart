@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:schoolspace/presentation/app_pages/home.dart';
-import 'package:schoolspace/presentation/auth_pages/get_started_page.dart';
-import 'package:schoolspace/presentation/auth_pages/login/login_email.dart';
-import 'package:schoolspace/presentation/auth_pages/login/login_password.dart';
-import 'package:schoolspace/presentation/auth_pages/signup/signup_email.dart';
-import 'package:schoolspace/presentation/auth_pages/signup/signup_password.dart';
-import 'package:schoolspace/presentation/auth_pages/signup/signup_user_info.dart';
-import 'package:schoolspace/presentation/auth_pages/signup/signup_verify_email.dart';
-import 'package:schoolspace/presentation/onboarding_pages/onboarding.dart';
+import 'package:schoolspace/presentation/pages/app_pages/home.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/get_started_page.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/login/login_email.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/login/login_password.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/signup/signup_email.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/signup/signup_password.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/signup/signup_user_info.dart';
+import 'package:schoolspace/presentation/pages/auth_pages/signup/signup_verify_email.dart';
+import 'package:schoolspace/presentation/pages/onboarding_pages/onboarding.dart';
 import 'package:schoolspace/utils/enums/app_routes.dart';
 import 'package:schoolspace/utils/helpers/logger.dart';
 
